@@ -16,5 +16,5 @@ struct Constants {
         static let COMMITS =  "https://api.github.com/repos/"
     }
 
-    static let USERLOGIN = "roblack"
+    static let USERLOGIN = "octocat"
 }

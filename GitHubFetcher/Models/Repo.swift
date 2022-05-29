@@ -5,7 +5,7 @@
 //  Created by Damnjan Markovic on 28.5.22..
 //
 
-import Foundation
+import UIKit
 
 public struct Repo: Codable {
     

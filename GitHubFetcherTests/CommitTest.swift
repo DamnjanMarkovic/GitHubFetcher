@@ -13,9 +13,7 @@ class CommitTest: XCTestCase {
 
     private var cancellables = Set<AnyCancellable>()
     private var dataSourceRepo:CustomDataSource<RepoCollectionViewCell, RepoCellViewModel>?
-    
     let error = CustomListener("")
-    
     
     func testFetchingCommits() throws {
         
@@ -24,7 +22,7 @@ class CommitTest: XCTestCase {
 
         let owner = User(login: "octocat")
         let repoModel = Repo(name: "boysenberry-repo-1", owner: owner)
-        let commits = try awaitPublisher(commitApiManager.getCommits(endpoint: .baseURL, repoModel: repoModel))
+        let commits = try awaitPublisher(commitApiManager.getCommits(endpoint: .commits, repoModel: repoModel))
         XCTAssert(commits.count > 0)
     }
 

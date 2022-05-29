@@ -11,12 +11,9 @@ import Combine
 
 class RepoTests: XCTestCase {
     
-    var sutRepoViewController: RepoViewController!
-    
     private var cancellables = Set<AnyCancellable>()
     let repoBoxViewModelCells: CustomListener<[RepoCellViewModel]?> = CustomListener([RepoCellViewModel]())
     let error = CustomListener("")
-    
     
     func testFetchingRepos() throws {
         
@@ -24,7 +21,7 @@ class RepoTests: XCTestCase {
         let repoApiManager = RepoApiManager(apiManager: apiManager)
 
         let user = User(login: "octocat")
-        let repos = try awaitPublisher(repoApiManager.getRepos(endpoint: .baseURL, user: user))
+        let repos = try awaitPublisher(repoApiManager.getRepos(endpoint: .repos, user: user))
         XCTAssert(repos.count > 0)
     }
 

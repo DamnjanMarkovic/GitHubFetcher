@@ -10,14 +10,25 @@ struct CommitCellViewModel {
     
     var message : String?
     var isVerified: Bool?
-    var imageUrl: String?
+    var imageAuthorUrl: String?
+    var imageCommiterUrl: String?
+    var time: String?
     
     
-//MARK: - Init if CommitViewController is using cell
+//MARK: - Init 
     init(commit: Commit) {
         self.message = commit.commit?.message
         self.isVerified = commit.commit?.verification?.verified ?? false
-        self.imageUrl = commit.committer?.avatar_url
+        
+        //"2016-08-02T19:06:17Z"
+        if let timeArrived = commit.commit?.author?.date {
+            self.time = String(timeArrived.replacingOccurrences(of: "T", with: "    ").dropLast())
+        }
+        
+        self.imageAuthorUrl = commit.author?.avatar_url
+        
+        //If commiter is different from author, set the iamgeURL form commiter, else not.
+        self.imageCommiterUrl = commit.committer?.login != commit.author?.login ? commit.committer?.avatar_url : nil
     }
 
 }

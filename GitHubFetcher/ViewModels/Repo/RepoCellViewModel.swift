@@ -9,17 +9,15 @@ import UIKit
 
 struct RepoCellViewModel {
     
-    var upperLabel : String?
-    var bottomLabel: String?
+    var repoName : String?
+    var repoOpenIssuesCount: Int?
     var imageUrl: String?
     
     
-//MARK: - Init if RepoViewController is using cell
+//MARK: - Init 
     init(repo: Repo) {
-        self.upperLabel = repo.name?.uppercased()
-        if let bottomLabelText = repo.open_issues_count {
-            self.bottomLabel = "Open issues: \(bottomLabelText)"
-        }
+        self.repoName = repo.name?.uppercased()
+        self.repoOpenIssuesCount = repo.open_issues_count
         self.imageUrl = repo.owner?.avatar_url
     }
 }

@@ -10,8 +10,8 @@ import UIKit
 class RepoCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet var labelDown: CustomLabel!
     @IBOutlet var labelUp: CustomLabel!
+    @IBOutlet var labelDown: CustomLabel!
     
     static let identifier = "RepoCollectionViewCell"
     
@@ -38,9 +38,9 @@ class RepoCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(with viewModel: RepoCellViewModel) {
-        labelUp.text = viewModel.upperLabel
-        labelDown.text = viewModel.bottomLabel
-        
+        labelUp.text = viewModel.repoName
+        labelDown.text = "Open issues: \(viewModel.repoOpenIssuesCount ?? 0)"
+
         if let imageURL = viewModel.imageUrl {
             imageView.loadImageUsingCache(withUrl: imageURL)
         }
